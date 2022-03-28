@@ -17,6 +17,10 @@ public class Tester {
     private final Result[] _foxResults;
     private Result[] _singleResults;
 
+    final int incrementor = 2;
+    private int _startProcessCount = 4;
+    private int _startAddition =5;
+
     public Tester(int startSize, int iterations, int dataCount, int processIteration){
         _startSize = startSize;
         _iterations = iterations;
@@ -53,13 +57,23 @@ public class Tester {
         }
     }
 
+    public void SetTestData(int[][] matrix){
+        _testData[0] = matrix;
+    }
+
+    public void IncreaseProcessCount(int times){
+        for (int i = 0; i < times; i++) {
+            _startProcessCount += _startAddition;
+            _startAddition += incrementor;
+        }
+    }
+
     public void Test(){
-        final int incrementor = 2;
         int index = 0;
         int dataIndex = 0;
         for (int k = 0; k< _iterations; k++) {
-            int addition = 5;
-            int processCount = 4;
+            int addition = _startAddition;
+            int processCount = _startProcessCount;
             for (int i = 0; i < _processIteration; i++) {
                 for (int j = 0; j < _dataCount; j++) {
                     _foxResults[index] = Multiplier.FoxMultiply(_testData[dataIndex], _testData[dataIndex], processCount);
