@@ -84,8 +84,8 @@ public class StripeThread extends Thread{
     private void Multiply(){
         lock.lock();
         int result = 0;
-        for (int n =0; n < _columnsIndexes.length; n++){
-            for (int i = 0; i< _rowsIndexes.length; i++){
+        for (int n =0; n < _columns.length; n++){
+            for (int i = 0; i< _rows.length; i++){
                 for (int j = 0; j< _columns[n].length; j++){
                     result += _rows[i][j] * _columns[n][j];
                 }
