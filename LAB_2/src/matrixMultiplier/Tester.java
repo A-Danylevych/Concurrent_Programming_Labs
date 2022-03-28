@@ -45,7 +45,7 @@ public class Tester {
             for (int j = 0; j< _dataCount; j ++) {
                 long start = System.currentTimeMillis();
                 _singleResults[index] = new Result(_testData[i+j].length, _testData[i+j][0].length);
-                _singleResults[index].GetResult(_testData[i + j], _testData[i + j]);
+                _singleResults[index].GetResult(_testData[i*_dataCount + j], _testData[i*_dataCount + j]);
                 long end = System.currentTimeMillis();
                 _singleResults[index].Elapsed = end - start;
                 index++;
@@ -146,7 +146,7 @@ public class Tester {
     private int SingleMeanTime(int iteration){
         int meanTime = 0;
         for (int i = 0; i<_dataCount; i++){
-            meanTime += _singleResults[iteration + i].Elapsed;
+            meanTime += _singleResults[iteration*_dataCount + i].Elapsed;
         }
         meanTime /= _dataCount;
         return meanTime;
